@@ -15,6 +15,7 @@ CREATE TABLE itens_consumo (
 	PRIMARY KEY(id_item)
 );
 
+-- Cliente(idCliente, nomeCliente)
 CREATE TABLE cliente(
 	id_cliente integer NOT NULL,
 	nome_cliente varchar(20) NOT NULL
@@ -22,6 +23,7 @@ CREATE TABLE cliente(
 );
 alter table cliente add primary key(id_cliente);
 
+-- Mesa(idMesa)
 CREATE TABLE mesa(
 	id_mesa integer NOT NULL
 	--PRIMARY KEY(id_mesa)
@@ -62,4 +64,15 @@ CREATE TABLE pedido_item(
 	FOREIGN KEY (id_pedido) references pedido(id_pedido),
 	FOREIGN KEY (id_item) references itens_consumo(id_item)
 )
+
+--  Nota(numeroNota, dataPagamento, idPedido)
+
+CREATE TABLE nota(
+	numero_nota integer NOT NULL,
+	data_pagamento date NOT NULL,
+	id_pedido integer NOT NULL,
+	primary key(numero_nota),
+	foreign key(id_pedido) references pedido(id_pedido)
+);
+
 DROP TABLE cliente, mesa;
