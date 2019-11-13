@@ -43,7 +43,23 @@ CREATE TABLE pedido(
 	FOREIGN KEY(ident_mesa) references mesa(id_mesa)
 );
 
+-- TelCliente(idCliente, telefone)
 
+CREATE TABLE tel_cliente(
+	id_cliente integer,
+	telefone varchar(13),
+	PRIMARY KEY(id_cliente, telefone),
+	FOREIGN KEY(id_cliente) references cliente(id_cliente)
+);
 
+-- PedidoItem(idPedido, idItem, quantidade)
 
+CREATE TABLE pedido_item(
+	id_pedido integer NOT NULL,
+	id_item integer NOT NULL,
+	quantidade integer NOT NULL,
+	PRIMARY KEY (id_pedido, id_item)
+	FOREIGN KEY (id_pedido) references pedido(id_pedido),
+	FOREIGN KEY (id_item) references itens_consumo(id_item)
+)
 DROP TABLE cliente, mesa;
