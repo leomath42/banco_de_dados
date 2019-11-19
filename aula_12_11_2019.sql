@@ -36,8 +36,8 @@ alter table mesa add primary key(id_mesa);
 CREATE TABLE pedido(
 	id_pedido integer 		NOT NULL,
 	dt_pedido date 			NOT NULL,
-	motivo_cancel varchar(100),
 	situacao varchar(10) 	NOT NULL,
+	motivo_cancel varchar(100),
 	ident_cliente integer 	NOT NULL,
 	ident_mesa integer 		NOT NULL,
 	PRIMARY KEY(id_pedido),
